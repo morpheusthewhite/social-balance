@@ -2,7 +2,7 @@ import gurobipy as gp
 import numpy as np
 
 
-def and_unoptimized(n_vertexes: int, edges: np.array) -> int:
+def and_model(n_vertexes: int, edges: np.array) -> int:
     """calculate frustration using XOR formulation (no optimization)
 
     Args:
@@ -56,7 +56,7 @@ def and_unoptimized(n_vertexes: int, edges: np.array) -> int:
     return model.objVal
 
 
-def xor_unoptimized(n_vertexes: int, edges: np.array) -> int:
+def xor_model(n_vertexes: int, edges: np.array) -> int:
     """calculate frustration using AND formulation (no optimization)
 
     Args:
@@ -110,7 +110,7 @@ def xor_unoptimized(n_vertexes: int, edges: np.array) -> int:
     return model.objVal
 
 
-def abs_unoptimized(n_vertexes: int, edges: np.array) -> int:
+def abs_model(n_vertexes: int, edges: np.array) -> int:
     """calculate frustration using ABS formulation (no optimization)
 
     Args:

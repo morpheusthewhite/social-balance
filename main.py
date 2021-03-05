@@ -1,13 +1,13 @@
 import numpy as np
 from social_balance.frustration import (
-    and_unoptimized,
-    xor_unoptimized,
-    abs_unoptimized,
+    and_model,
+    xor_model,
+    abs_model,
 )
 
 
 def main():
-    solving_function = abs_unoptimized
+    solving_function = abs_model
 
     edges1 = np.array([[0, 1, 1], [2, 1, 1], [2, 0, 1]])
     n_frustrated1 = solving_function(3, edges1)
