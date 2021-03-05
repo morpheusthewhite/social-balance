@@ -65,12 +65,13 @@ def and_model(
         f_ij = (1 - sign) / 2 + sign * (x_i + x_j - 2 * x_ij)
         objective += f_ij
 
-    if degrees is None:
-        degrees = degrees_
+    if optimize:
+        if degrees is None:
+            degrees = degrees_
 
-    for i, degree in enumerate(degrees):
-        x_i = vertices_variables[i]
-        x_i.branchPriority = int(degree)
+        for i, degree in enumerate(degrees):
+            x_i = vertices_variables[i]
+            x_i.branchPriority = int(degree)
 
     model.setObjective(objective, gp.GRB.MINIMIZE)
     model.optimize()
@@ -141,12 +142,13 @@ def xor_model(
 
         objective += f_ij
 
-    if degrees is None:
-        degrees = degrees_
+    if optimize:
+        if degrees is None:
+            degrees = degrees_
 
-    for i, degree in enumerate(degrees):
-        x_i = vertices_variables[i]
-        x_i.branchPriority = int(degree)
+        for i, degree in enumerate(degrees):
+            x_i = vertices_variables[i]
+            x_i.branchPriority = int(degree)
 
     model.setObjective(objective, gp.GRB.MINIMIZE)
     model.optimize()
@@ -215,12 +217,13 @@ def abs_model(
         f_ij = e_ij + h_ij
         objective += f_ij
 
-    if degrees is None:
-        degrees = degrees_
+    if optimize:
+        if degrees is None:
+            degrees = degrees_
 
-    for i, degree in enumerate(degrees):
-        x_i = vertices_variables[i]
-        x_i.branchPriority = int(degree)
+        for i, degree in enumerate(degrees):
+            x_i = vertices_variables[i]
+            x_i.branchPriority = int(degree)
 
     model.setObjective(objective, gp.GRB.MINIMIZE)
     model.optimize()
