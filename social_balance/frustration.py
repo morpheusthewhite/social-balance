@@ -44,11 +44,11 @@ def and_model(n_vertexes: int, edges: np.array) -> int:
             model.addConstr(x_ij <= x_i)
             model.addConstr(x_ij <= x_j)
 
-            objective += x_i + x_j - 2 * x_ij
         else:
             model.addConstr(x_ij >= x_i + x_j - 1)
 
-            objective += 1 - (x_i + x_j - 2 * x_ij)
+        f_ij = (1 - sign) / 2 + sign * (x_i + x_j - 2 * x_ij)
+        objective += f_ij
 
     model.setObjective(objective, gp.GRB.MINIMIZE)
     model.optimize()
@@ -154,7 +154,8 @@ def abs_model(n_vertexes: int, edges: np.array) -> int:
         else:
             model.addConstr(x_i + x_j - 1 == e_ij - h_ij)
 
-        objective += e_ij + h_ij
+        f_ij = e_ij + h_ij
+        objective += f_ij
 
     model.setObjective(objective, gp.GRB.MINIMIZE)
     model.optimize()
