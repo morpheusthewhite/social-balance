@@ -1,16 +1,12 @@
 import numpy as np
-from social_balance.frustration import (
-    and_model,
-    xor_model,
-    abs_model,
-)
+from social_balance.frustration import frustration_model
 
 
 def main():
-    solving_function = abs_model
+    model = "xor"
 
     edges1 = np.array([[0, 1, 1], [2, 1, 1], [2, 0, 1]])
-    n_frustrated1 = solving_function(3, edges1)
+    n_frustrated1 = frustration_model(3, edges1, False, model=model)
 
     print("=" * 20)
     print(f"Edges: {edges1}")
@@ -19,7 +15,7 @@ def main():
     print("-" * 10)
 
     edges2 = np.array([[0, 1, 1], [2, 1, 1], [2, 0, -1]])
-    n_frustrated2 = solving_function(3, edges2)
+    n_frustrated2 = frustration_model(3, edges2, False, model=model)
 
     print("=" * 20)
     print(f"Edges: {edges2}")
