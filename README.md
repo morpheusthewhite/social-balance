@@ -20,7 +20,7 @@ To run the examples
 $ python main.py
 ```
 
-The best way of using this code in your project is just copying `social-balance/frustration.py` into your folder and importing it (if you do it then please star this repository, it will help other people finding it).
+The best way of using this code in your project is just copying `social-balance.py` into your folder and importing it (if you do it then please star this repository, it will help other people finding it).
 
 If you appreciated my work, then follow me [on GitHub](https://github.com/morpheusthewhite).
 

@@ -1,5 +1,5 @@
 import numpy as np
-from social_balance.frustration import frustration_model
+from social_balance import frustration_model
 
 
 def main():
