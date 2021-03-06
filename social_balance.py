@@ -1,12 +1,11 @@
 import gurobipy as gp
-import numpy as np
 
 
 def frustration_model(
     n_vertices: int,
-    edges: np.array,
+    edges: list[list[int]],
     optimize: bool = True,
-    degrees: np.array = None,
+    degrees: list[int] = None,
     model: str = "and",
 ) -> int:
     """calculate frustration using either AND, XOR or ABS formulation
@@ -14,10 +13,11 @@ def frustration_model(
     Args:
         n_vertices (int): number of vertices in the graph. Vertices index in
         the edges need to be in [0, n_vertices-1]
-        edges (np.array): a (n_edges, 3) numpy array, each row representing an
-        edge:
-            - the first and second elements are the vertices index
-            - the third element is the edge sign (+1 or -1)
+        edges (list[list[int]]): a list of the edges, each element being a 3
+        element list (or tuple) whose elements are, respectively:
+            - the index of one of the incident vertices
+            - the index of the other incident vertex
+            - the edge sign (+1 or -1)
         optimize: if true use optimizations
         degrees: the degrees of the nodes. if optimization is true and they are
         not provided they will be computed
