@@ -27,6 +27,9 @@ def frustration_model(
         int: the number of frustrated edges
     """
     model = gp.Model("frustration_model")
+    # suppress console output
+    model.Params.outputFlag = 0
+
     vertices_variables = [
         model.addVar(vtype=gp.GRB.BINARY, name=f"x_{i}")
         for i in range(n_vertices)
