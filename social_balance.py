@@ -13,7 +13,7 @@ def frustration_model(
     Args:
         n_vertices (int): number of vertices in the graph. Vertices index in
         the edges need to be in [0, n_vertices-1]
-        edges (list[list[int]]): a list of the edges, each element being a 3
+        edges (list[list[int]]): a list (or numpy array) of the edges, each element being a 3
         element list (or tuple) whose elements are, respectively:
             - the index of one of the incident vertices
             - the index of the other incident vertex
