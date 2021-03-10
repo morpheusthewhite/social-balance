@@ -9,7 +9,7 @@ parser.add_argument(
     "--model",
     default="xor",
     metavar="MODEL_NAME",
-    dest="model",
+    dest="model_name",
     help="Which model to use (either 'and', 'xor' or 'abs')",
 )
 parser.add_argument(
@@ -32,12 +32,11 @@ parser.add_argument(
 
 def main():
     args = parser.parse_args()
-    model = args.model
 
     if args.graph_file is None:
         edges1 = [[0, 1, 1], [2, 1, 1], [2, 0, 1]]
         n_frustrated1 = frustration_model(
-            3, edges1, args.no_optimize, model=model
+            3, edges1, args.no_optimize, args.model_name
         )
 
         print("=" * 20)
@@ -47,7 +46,7 @@ def main():
 
         edges2 = [[0, 1, 1], [2, 1, 1], [2, 0, -1]]
         n_frustrated2 = frustration_model(
-            3, edges2, args.no_optimize, model=model
+            3, edges2, args.no_optimize, args.model_name
         )
 
         print("=" * 20)
@@ -69,7 +68,11 @@ def main():
         edges = edges.astype(np.int32)
 
         n_frustrated = frustration_model(
-            num_vertices, edges, args.no_optimize, model=model, degrees=degrees
+            num_vertices,
+            edges,
+            args.no_optimize,
+            model_name=args.model_name,
+            degrees=degrees,
         )
 
         print("=" * 20)
