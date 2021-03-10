@@ -12,6 +12,8 @@ library can be used.
 
 To run/use this project you need to install the [Gurobi Optimizer](https://www.gurobi.com/downloads/gurobi-optimizer-eula/) and its python bindings (the easiest way being `python -m pip install -i https://pypi.gurobi.com gurobipy`), which can also be done for conda environments (see [Gurobi guide](https://www.gurobi.com/documentation/9.1/quickstart_mac/cs_python_installation_opt.html) for details). You also need at least Python 3.9 to run this code.
 
+Also `numpy` is needed.
+
 ## Usage
 
 To run the examples
