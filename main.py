@@ -55,6 +55,7 @@ def main():
         num_vertices = graph.num_vertices()
         num_edges = graph.num_edges()
         weights = graph.edge_properties["weights"]
+        degrees = graph.degree_property_map("total").a
 
         edges = graph.get_edges([weights])
         # get the sign of the weights (in case they are float if casted they
@@ -64,7 +65,7 @@ def main():
         edges = edges.astype(np.int32)
 
         n_frustrated = frustration_model(
-            num_vertices, edges, False, model=model
+            num_vertices, edges, False, model=model, degrees=degrees
         )
 
         print("=" * 20)
