@@ -1,4 +1,5 @@
 import gurobipy as gp
+import numpy as np
 
 
 def frustration_model(
