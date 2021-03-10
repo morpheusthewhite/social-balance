@@ -9,16 +9,8 @@ parser.add_argument(
     "--model",
     default="xor",
     metavar="MODEL_NAME",
-    dest="model",
+    dest="model_name",
     help="Which model to use (either 'and', 'xor' or 'abs')",
-)
-parser.add_argument(
-    "-on",
-    "--optimize-no",
-    action="store_true",
-    default=False,
-    dest="no_optimize",
-    help="If passed does not use optimization techniques (like branching priority and lazy constraints)",
 )
 parser.add_argument(
     "-g",
@@ -32,13 +24,10 @@ parser.add_argument(
 
 def main():
     args = parser.parse_args()
-    model = args.model
 
     if args.graph_file is None:
         edges1 = [[0, 1, 1], [2, 1, 1], [2, 0, 1]]
-        n_frustrated1 = frustration_model(
-            3, edges1, args.no_optimize, model_name=model
-        )
+        n_frustrated1 = frustration_model(3, edges1, args.model_name)
 
         print("=" * 20)
         print(f"Edges: {edges1}")
@@ -46,9 +35,7 @@ def main():
         print("=" * 20)
 
         edges2 = [[0, 1, 1], [2, 1, 1], [2, 0, -1]]
-        n_frustrated2 = frustration_model(
-            3, edges2, args.no_optimize, model_name=model
-        )
+        n_frustrated2 = frustration_model(3, edges2, args.model_name)
 
         print("=" * 20)
         print(f"Edges: {edges2}")
@@ -59,7 +46,6 @@ def main():
         num_vertices = graph.num_vertices()
         num_edges = graph.num_edges()
         weights = graph.edge_properties["weights"]
-        degrees = graph.degree_property_map("total").a
 
         edges = graph.get_edges([weights])
         # get the sign of the weights (in case they are float if casted they
@@ -68,13 +54,7 @@ def main():
         # now cast to int
         edges = edges.astype(np.int32)
 
-        n_frustrated = frustration_model(
-            num_vertices,
-            edges,
-            args.no_optimize,
-            model_name=model,
-            degrees=degrees,
-        )
+        n_frustrated = frustration_model(num_vertices, edges, args.model_name)
 
         print("=" * 20)
         print(f"Edges: {edges}")

@@ -5,8 +5,6 @@ import numpy as np
 def frustration_model(
     n_vertices: int,
     edges: list[list[int]],
-    optimize: bool = True,
-    degrees: list[int] = None,
     model_name: str = "and",
 ) -> int:
     """calculate frustration using either AND, XOR or ABS formulation
@@ -19,10 +17,7 @@ def frustration_model(
             - the index of one of the incident vertices
             - the index of the other incident vertex
             - the edge sign (+1 or -1)
-        optimize: if true use optimizations
-        degrees: the degrees of the nodes. if optimization is true and they are
-        not provided they will be computed
-        model: which of the models to use (either "and", "xor" or "abs")
+        model_name: which of the models to use (either "and", "xor" or "abs")
 
     Returns:
         int: the number of frustrated edges
