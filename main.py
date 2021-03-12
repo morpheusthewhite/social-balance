@@ -58,6 +58,7 @@ def main():
 
         print("=" * 20)
         print(f"Edges: {edges}")
+        print(f"Number of edges: {edges.shape[0]}")
         print(f"Number of frustrated edges: {n_frustrated}")
         print(f"Fraction of frustrated edges: {n_frustrated/num_edges}")
         print("=" * 20)
